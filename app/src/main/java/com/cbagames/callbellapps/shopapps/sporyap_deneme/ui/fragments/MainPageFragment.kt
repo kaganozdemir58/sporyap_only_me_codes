@@ -7,27 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.R
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.entity.MediaObject
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.databinding.FragmentMainPageBinding
-import com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.adapter.SimpleRVAdapter
-import com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.viewmodel.MainPageViewModel
+import com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.adapter.MainPageRVAdapter
+import com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.viewmodel.main.MainPageViewModel
 
 class MainPageFragment : Fragment() {
 
     private lateinit var design: FragmentMainPageBinding
-    private lateinit var viewModel:MainPageViewModel
-    private lateinit var mList : ArrayList<MediaObject>
+    private lateinit var viewModel: MainPageViewModel
+    //private lateinit var mList : ArrayList<MediaObject>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater,R.layout.fragment_main_page, container, false)
         design.mainPageFragment = this
 
         viewModel.mediaObjectList.observe(viewLifecycleOwner){
-            val  adapter = SimpleRVAdapter(requireContext(),it,viewModel)
+            val  adapter = MainPageRVAdapter(requireContext(),it,viewModel)
             design.adapter = adapter
         }
 

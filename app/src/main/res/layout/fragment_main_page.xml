@@ -9,7 +9,7 @@
             type="com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.fragments.MainPageFragment" />
         <variable
             name="adapter"
-            type="com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.adapter.SimpleRVAdapter" />
+            type="com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.adapter.MainPageRVAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +19,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
+            android:background="@color/app_main_color"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:adapter="@{adapter}"
             android:layout_width="0dp"
