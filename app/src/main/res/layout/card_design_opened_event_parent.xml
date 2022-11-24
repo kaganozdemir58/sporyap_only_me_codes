@@ -3,26 +3,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-
-        <variable
-            name="listeSayisi"
-            type="Integer" />
-
+        <import type="android.view.View"/>
+        <variable name="listeSayisi" type="Integer" />
     </data>
 <LinearLayout
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/app_main_color"
     android:paddingLeft="8dp"
-    android:paddingTop="10dp">
+    android:paddingBottom="2dp"
+    android:visibility="@{listeSayisi > 0 ? View.VISIBLE : View.INVISIBLE }"
+    >
 
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
+    android:id="@+id/cardViewOpenedEventParent"
     android:background="@color/app_main_color"
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:paddingTop="@{listeSayisi>0 ? 10:0}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/app_main_color"
@@ -30,7 +33,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textViewGroupName"
@@ -38,7 +41,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/app_main_color"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="Grup ismi"
                 android:textColor="#0DB70E"
                 android:textSize="18dp"
                 android:textStyle="bold"
@@ -50,11 +52,11 @@
                 android:id="@+id/textViewTumu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="20dp"
                 android:background="@color/app_main_color"
                 android:fontFamily="@font/montserrat_light"
                 android:text="Tümü"
-                android:textSize="16dp"
+                android:textSize="15dp"
                 android:textColor="@{listeSayisi > 10 ? @color/white : @color/app_main_color}"
                 android:clickable="@{listeSayisi > 10 ? true : false}"
                 app:layout_constraintBottom_toBottomOf="parent"

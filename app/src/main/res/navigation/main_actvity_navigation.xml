@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_actvity_navigation"
-    app:startDestination="@id/otherPageForNavigationTestFragment">
+    app:startDestination="@id/openedEventFragment">
 
     <fragment
         android:id="@+id/mainPageFragment"
@@ -36,5 +36,48 @@
     <fragment
         android:id="@+id/openedEventFragment"
         android:name="com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.fragments.OpenedEventFragment"
-        android:label="OpenedEventFragment" />
+        android:label="OpenedEventFragment" >
+        <action
+            android:id="@+id/action_openedEventFragment_to_allOpenedEvendFragment"
+            app:destination="@id/allOpenedEvendFragment" />
+        <action
+            android:id="@+id/action_openedEventFragment_to_openedEventDublicateFragment"
+            app:destination="@id/openedEventDublicateFragment" />
+        <argument
+            android:name="eventType"
+            app:argType="string"
+            android:defaultValue="all" />
+    </fragment>
+    <fragment
+        android:id="@+id/allOpenedEvendFragment"
+        android:name="com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.fragments.AllOpenedEvendFragment"
+        android:label="fragment_all_opened_evend"
+        tools:layout="@layout/fragment_all_opened_evend" >
+        <argument
+            android:name="list"
+            app:argType="com.cbagames.callbellapps.shopapps.sporyap_deneme.data.entity.OpenedEvent[]" />
+        <argument
+            android:name="titleName"
+            app:argType="string"
+            android:defaultValue="Yeni Eklenenler" />
+        <action
+            android:id="@+id/action_allOpenedEvendFragment_to_openedEventFragment2"
+            app:destination="@id/openedEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/openedEventDublicateFragment"
+        android:name="com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.fragments.OpenedEventDublicateFragment"
+        android:label="fragment_opened_event_dublicate"
+        tools:layout="@layout/fragment_opened_event_dublicate" >
+        <action
+            android:id="@+id/action_openedEventDublicateFragment_to_openedEventFragment"
+            app:destination="@id/openedEventFragment" />
+        <argument
+            android:name="eventType"
+            app:argType="string"
+            android:defaultValue="all" />
+        <action
+            android:id="@+id/action_openedEventDublicateFragment_to_allOpenedEvendFragment"
+            app:destination="@id/allOpenedEvendFragment" />
+    </fragment>
 </navigation>

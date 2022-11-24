@@ -13,12 +13,13 @@
         <variable
             name="adapter"
             type="com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.adapter.OpenedEventParentRVAdapter" />
+        <variable name="secim" type="String" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0DB70E">
+        android:background="#B3098C0A">
 
         <!-- TODO: Update blank fragment layout -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +30,7 @@
                 android:id="@+id/rv_search"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="0.5dp"
                 android:adapter="@{adapter}"
                 android:background="@color/app_main_color"
                 android:orientation="vertical"
@@ -63,11 +64,12 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:onClick="@{()-> fragment.selectButton(textView3)}"
                         android:text="Tümü"
+                        android:onClick="@{()-> fragment.selectButton(textView3)}"
                         android:textColor="#0DB70E"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/montserrat_light"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/textView2"
                         app:layout_constraintStart_toStartOf="parent"
@@ -77,11 +79,12 @@
                         android:id="@+id/textView2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_light"
                         android:gravity="center"
                         android:onClick="@{()-> fragment.selectButton(textView2)}"
                         android:text="Etkinlik"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/textView5"
                         app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -94,8 +97,9 @@
                         android:gravity="center"
                         android:onClick="@{()-> fragment.selectButton(textView5)}"
                         android:text="Eğitim"
+                        android:fontFamily="@font/montserrat_light"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/textView6"
                         app:layout_constraintStart_toEndOf="@+id/textView2"
@@ -109,8 +113,9 @@
                         android:gravity="center"
                         android:onClick="@{()-> fragment.selectButton(textView6)}"
                         android:text="Antrenman"
+                        android:fontFamily="@font/montserrat_light"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView5"

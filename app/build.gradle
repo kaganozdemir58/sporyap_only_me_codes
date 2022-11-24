@@ -1,7 +1,12 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
+apply plugin: 'kotlin-kapt'
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 
 android {
     compileSdk 32
@@ -10,6 +15,7 @@ android {
         viewBinding = true
         dataBinding true
     }
+
 
     defaultConfig {
         applicationId "com.cbagames.callbellapps.shopapps.sporyap_deneme"
@@ -34,6 +40,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 
 apply plugin: "androidx.navigation.safeargs.kotlin"
@@ -60,4 +67,11 @@ dependencies {
     // JSON Parsin
     implementation 'com.google.code.gson:gson:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata:2.3.0"
+    kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.3"
 }

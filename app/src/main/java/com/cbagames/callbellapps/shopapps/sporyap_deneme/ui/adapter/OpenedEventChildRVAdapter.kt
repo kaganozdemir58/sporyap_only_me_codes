@@ -38,6 +38,7 @@ class OpenedEventChildRVAdapter (private val mContext: Context, private val mLis
             .into(holder.design.searchChildImage)
         holder.design.cardView2outSide.setCardBackgroundColor(Color.parseColor(randomColorSelect()))
 
+
     }
 
     override fun getItemCount(): Int {

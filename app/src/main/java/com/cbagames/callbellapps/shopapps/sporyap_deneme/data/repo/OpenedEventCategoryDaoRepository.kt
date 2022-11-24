@@ -8,11 +8,12 @@ import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.entity.OpenedEvent
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.retrofit.ApiUtils
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.retrofit.Constants
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.retrofit.openedData.GetOpenedEvents
+import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.retrofit.openedData.allEventList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class OpenedEventCategoryDaoRepository {
+class OpenedEventCategoryDaoRepository() {
 
     var objectList: MutableLiveData<List<OpenedEventCategory>>
 
@@ -31,7 +32,6 @@ class OpenedEventCategoryDaoRepository {
     fun getMutableList(): MutableLiveData<List<OpenedEventCategory>> {
         return objectList
     }
-/*
 
     fun getAllObjects() {
 
@@ -87,9 +87,9 @@ class OpenedEventCategoryDaoRepository {
         }
         return mList
     }
-*/
 
-    fun getAllData(){
+
+    fun getAllData(eventType: String){
         val kdi = ApiUtils.openedEventDaoInterface()
 
         val token = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InRlc3Quc3BvcmN1IiwiRW1haWwiOiJzcG9yY3VAZ21haWwuY29tIiwiUGhvbmUiOiIwNTU1NTU1NTU1NSIsIjAiOiI5MSIsIlJvbGVJZCI6IjMiLCJVc2VyVHlwZSI6IlNwb3JjdSIsIklzTG9naW5Nb2JpbGUiOiIxIiwiZXhwIjoxNjc2NjQ5MDg2fQ.KyjOELtBJoaydCCnWioKHJa0JLT2Hcx-J_GAWn6mMZY"
@@ -102,44 +102,66 @@ class OpenedEventCategoryDaoRepository {
 
             override fun onResponse(call: Call<GetOpenedEvents>?, response: Response<GetOpenedEvents>?) {
                 if (response != null){
-                    addToList(response)
+                    clearLists()
+                    addToList(response,eventType)
                 }
             }
         })
 
     }
 
-    fun addToList(response: Response<GetOpenedEvents>){
+    fun clearLists(){
+        PopulerTitleList.clear()
+        NewTitleList.clear()
+        MissingOnlyOneTitleList.clear()
+        StartSoonTitleList.clear()
+        RecommendedTitleList.clear()
+        categoryList.clear()
+    }
+
+    fun addToList(response: Response<GetOpenedEvents>,eventType: String){
 
         val mList = response.body().result.allEventList
 
         if (mList != null){
 
             for (k in mList){
-
                 val i = OpenedEvent(k.id,k.title,k.eventPhoto,k.eventType)
 
-                if (k.isPopuler){
-                    PopulerTitleList.add(i)
+                if (eventType.equals("all")){
+                    //Log.e("event type xxx",eventType+k.id)
+                    addCategoryAllList(k,i)
+                }else {
+                    if (i.eventType == eventType){
+                        //Log.e("event type xxx",eventType+k.id)
+                        addCategoryAllList(k,i)
+                    }
                 }
-                if(k.isNew){
-                    NewTitleList.add(i)
-                }
-                if(k.isMissingOnlyOne){
-                    MissingOnlyOneTitleList.add(i)
-                }
-                if(k.isStartSoon){
-                    StartSoonTitleList.add(i)
-                }
-                if(k.isRecommended){
-                    RecommendedTitleList.add(i)
-                }
+
             }
 
         }else{
             Log.e("Liste null ","Null object")
         }
         addCategoryList(response)
+    }
+
+    private fun addCategoryAllList(k:allEventList,i:OpenedEvent){
+        if (k.isPopuler){
+            PopulerTitleList.add(i)
+        }
+        if(k.isNew){
+            NewTitleList.add(i)
+        }
+        if(k.isMissingOnlyOne){
+            MissingOnlyOneTitleList.add(i)
+        }
+        if(k.isStartSoon){
+            StartSoonTitleList.add(i)
+        }
+        if(k.isRecommended){
+            RecommendedTitleList.add(i)
+        }
     }
 
     private fun addCategoryList(response: Response<GetOpenedEvents>) {

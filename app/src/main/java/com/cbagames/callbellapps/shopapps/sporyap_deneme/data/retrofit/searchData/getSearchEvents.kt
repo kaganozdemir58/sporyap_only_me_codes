@@ -20,5 +20,5 @@ data class getSearchEvents (
     @SerializedName("result")
     @Expose
     var result:result,
-        ) {
-}
+
+) { }

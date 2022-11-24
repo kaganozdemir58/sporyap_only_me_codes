@@ -89,7 +89,7 @@ class MainMediaObjectDaoRepository {
                                 k.rating,
                                 k.totalMemberCount,
                                 k.isLiked,
-                                k.profileImage)
+                                k.mediaType)
                             xList.add(i)
                         }
                     }else{

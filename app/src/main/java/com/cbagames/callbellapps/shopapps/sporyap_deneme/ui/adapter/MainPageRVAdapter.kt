@@ -5,13 +5,11 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.R
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.entity.MediaObject
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.databinding.CardDesignMainPageBinding
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.viewmodel.main.MainPageViewModel
-import com.squareup.picasso.Picasso
 
 class MainPageRVAdapter(var mContext:Context, var mList:List<MediaObject>, var viewModel: MainPageViewModel)
     : RecyclerView.Adapter<MainPageRVAdapter.CardDesignHolder>(){
@@ -34,16 +32,16 @@ class MainPageRVAdapter(var mContext:Context, var mList:List<MediaObject>, var v
 
         val d = holder.design
 
-        d.textViewEducationName.setText(mediaObject.SportName)
-        d.textViewSporName.setText(mediaObject.EventName)
-        d.ratingBar.rating = mediaObject.Rating.toFloat()
-        d.textViewRating.setText(mediaObject.Rating.toString())
-        d.textViewAdress.setText(mediaObject.LocationName)
-        d.textViewTotalPerson.setText(mediaObject.TotalMemberCount.toString())
-        d.textViewEventTypeName.setText(mediaObject.EventTypeName.toString())
+        d.textViewEducationName.setText(mediaObject.sportName)
+        d.textViewSporName.setText(mediaObject.eventName)
+        d.ratingBar.rating = mediaObject.rating.toFloat()
+        d.textViewRating.setText(mediaObject.rating.toString())
+        d.textViewAdress.setText(mediaObject.locationName)
+        d.textViewTotalPerson.setText(mediaObject.totalMemberCount.toString())
+        d.textViewEventTypeName.setText(mediaObject.eventTypeName.toString())
         //Picasso.with(mContext).load(mediaObject.ProfileImage).error(R.drawable.golf_picture).into(d.imageViewProfile)
 
-        if (mediaObject.IsLiked){
+        if (mediaObject.isLiked){
             d.imageViewLike.setImageResource(R.drawable.like_full)
         }else{
             d.imageViewLike.setImageResource(R.drawable.like_empty)
@@ -78,12 +76,12 @@ class MainPageRVAdapter(var mContext:Context, var mList:List<MediaObject>, var v
         d.videoView.start()
         d.videoView.setOnCompletionListener(MediaPlayer.OnCompletionListener { d.videoView.start() })*/
 
-        d.videoView.setVideoURI((Uri.parse(mediaObject.media_url)))
+        d.videoView.setVideoURI((Uri.parse(mediaObject.coverMediaUrl)))
         d.videoView.start()
 
         d.cardView.setOnClickListener {
             Toast.makeText(mContext,"Tıklandı",Toast.LENGTH_SHORT).show()
-         /*   val translater = MainPageFragmentDirections.navigationTest(mediaObject=mediaObject)
+            /*val translater = MainPageFragmentDirections.navigationTest(mediaObject=mediaObject)
             Navigation.findNavController(it).navigate(translater)*/
         }
     }

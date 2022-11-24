@@ -1,40 +1,33 @@
 package com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.fragments
 
-import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.R
-import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.entity.OpenedEventCategory
-import com.cbagames.callbellapps.shopapps.sporyap_deneme.databinding.FragmentOpenedEventBinding
+import com.cbagames.callbellapps.shopapps.sporyap_deneme.databinding.FragmentOpenedEventDublicateBinding
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.adapter.OpenedEventParentRVAdapter
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.ui.viewmodel.openEvents.OpenedEventPageViewModel
 
-class OpenedEventFragment : Fragment() {
-
-    private lateinit var design: FragmentOpenedEventBinding
+class OpenedEventDublicateFragment : Fragment() {
+    private lateinit var design: FragmentOpenedEventDublicateBinding
     private lateinit var viewModel: OpenedEventPageViewModel
-    private lateinit var textViewSelected:TextView
+    private lateinit var textViewSelected: TextView
     private var textViewList = ArrayList<TextView>()
     private lateinit var eventType:String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        design = DataBindingUtil.inflate(inflater, R.layout.fragment_opened_event, container, false)
+        design = DataBindingUtil.inflate(inflater, R.layout.fragment_opened_event_dublicate, container, false)
         design.fragment = this
 
         textViewList.add(design.textView3)
@@ -45,18 +38,17 @@ class OpenedEventFragment : Fragment() {
         getTextViewForSelectButton(eventType)
 
         viewModel.mList.observe(viewLifecycleOwner){
-           // val xxList = it.filter {  }
-            val  adapter = OpenedEventParentRVAdapter(requireContext(),it,"opened")
+            val  adapter = OpenedEventParentRVAdapter(requireContext(),it,"dublicate")
             design.adapter = adapter
-            Log.e("it",it.toString())
+            //Log.e("it",it.toString())
         }
 
         // tümü seçimi defauld olarak ekliyoruz
         //textViewSelected = design.textView3
 
+
         return design.root
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,6 +80,12 @@ class OpenedEventFragment : Fragment() {
 
     }
 
+    fun goto (it:View,eventType:String){
+        val translater = OpenedEventDublicateFragmentDirections
+            .actionOpenedEventDublicateFragmentToOpenedEventFragment(eventType)
+
+        Navigation.findNavController(it).navigate(translater)
+    }
 
     fun getTextForSelectButton(textView:TextView):String{
         var text = "all"
@@ -123,16 +121,24 @@ class OpenedEventFragment : Fragment() {
         textViewList[i]!!.setTypeface(typeFace)
 
 
-
-
         textViewSelected = textViewList[i]
     }
 
-    fun goto (it:View,eventType:String){
-        val translater = OpenedEventFragmentDirections
-            .actionOpenedEventFragmentToOpenedEventDublicateFragment(eventType)
-
-        Navigation.findNavController(it).navigate(translater)
+    fun selectedButtonColorsSetting(textView:TextView){
+        for (indexTextView in textViewList){
+            if (indexTextView == textView){
+                textView.setTextColor(Color.parseColor("#0DB70E"))
+                textView.setTextSize(17f)
+                textView.setTypeface(Typeface.DEFAULT_BOLD)
+            }else{
+                textView.setTextColor(ContextCompat.getColor(this.requireContext(), R.color.white))
+                textView.setTextSize(16f)
+                textView.setTypeface(Typeface.DEFAULT)
+            }
+        }
     }
+
+
+
 
 }

@@ -18,7 +18,7 @@ class OtherPageForNavigationTestFragment : Fragment() {
         design = FragmentOtherPageForNavigationTestBinding.inflate(inflater, container, false)
 
         design.textView.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_otherPageForNavigationTestFragment_to_searchFragment)
+            //Navigation.findNavController(it).navigate(R.id.action_otherPageForNavigationTestFragment_to_searchFragment)
         }
         design.goToEvent.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_otherPageForNavigationTestFragment_to_mainPageFragment)
@@ -27,7 +27,11 @@ class OtherPageForNavigationTestFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.action_otherPageForNavigationTestFragment_to_searchFragment)
         }
         design.goToOpened.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_otherPageForNavigationTestFragment_to_openedEventFragment)
+            //Navigation.findNavController(it).navigate(R.id.action_otherPageForNavigationTestFragment_to_openedEventFragment)
+            val translater = OtherPageForNavigationTestFragmentDirections
+                .actionOtherPageForNavigationTestFragmentToOpenedEventFragment("all")
+
+            Navigation.findNavController(it).navigate(translater)
         }
 
         return design.root

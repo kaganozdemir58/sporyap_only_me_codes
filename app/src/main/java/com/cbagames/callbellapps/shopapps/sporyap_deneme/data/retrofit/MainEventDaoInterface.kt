@@ -1,5 +1,6 @@
 package com.cbagames.callbellapps.shopapps.sporyap_deneme.data.retrofit
 
+import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.retrofit.Constants
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.retrofit.mainData.eventTimeline
 import retrofit2.Call
 import retrofit2.http.GET

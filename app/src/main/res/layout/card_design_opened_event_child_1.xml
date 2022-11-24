@@ -15,9 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="3dp"
+            android:paddingLeft="4dp"
             android:paddingTop="15dp"
-            android:paddingBottom="10dp"
             android:paddingRight="3dp">
 
             <androidx.cardview.widget.CardView
@@ -64,12 +63,13 @@
                 android:id="@+id/textViewChild"
                 android:layout_width="0dp"
                 android:layout_height="40sp"
-                android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_light"
+                android:gravity="center_horizontal|top"
                 android:text="Şile \nYelken"
                 android:textColor="@color/white"
                 android:visibility="visible"

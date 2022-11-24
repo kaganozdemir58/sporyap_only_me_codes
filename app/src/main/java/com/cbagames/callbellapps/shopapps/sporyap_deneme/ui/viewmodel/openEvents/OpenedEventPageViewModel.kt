@@ -5,17 +5,22 @@ import androidx.lifecycle.ViewModel
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.entity.OpenedEventCategory
 import com.cbagames.callbellapps.shopapps.sporyap_deneme.data.repo.OpenedEventCategoryDaoRepository
 
-class OpenedEventPageViewModel: ViewModel() {
+class OpenedEventPageViewModel (): ViewModel() {
     val kRepo = OpenedEventCategoryDaoRepository()
 
-    var mList=  MutableLiveData<List<OpenedEventCategory>>()
+    var mList =  MutableLiveData<List<OpenedEventCategory>>()
+
+    var eventType = ""
 
     init {
-        getAllViewModel()
-        mList = kRepo.getMutableList()
+        //getAllViewModel()
+       // mList = kRepo.getMutableList()
     }
 
     fun getAllViewModel(){
-        kRepo.getAllData()
+        kRepo.getAllData(eventType)
+
+        mList = kRepo.getMutableList()
     }
+
 }

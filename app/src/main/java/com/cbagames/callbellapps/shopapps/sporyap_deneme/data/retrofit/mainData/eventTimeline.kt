@@ -20,5 +20,5 @@ data class eventTimeline (
     @SerializedName("result")
     @Expose
     var result: List<result>,
-        ) {
-}
+
+) {  }
