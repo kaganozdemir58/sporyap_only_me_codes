@@ -105,7 +105,7 @@ class OpenedEventFragment : Fragment() {
     fun getTextViewForSelectButton(eventType:String){
         for (indexTextView in textViewList){
             indexTextView.setTextColor(ContextCompat.getColor(this.requireContext(), R.color.white))
-            indexTextView.setTextSize(16f)
+            indexTextView.setTextSize(15f)
             indexTextView.setTypeface(Typeface.DEFAULT)
         }
         var i = 0;
@@ -116,14 +116,11 @@ class OpenedEventFragment : Fragment() {
             "trainer" -> i=3;
         }
         textViewList[i].setTextColor(Color.parseColor("#0DB70E"))
-        textViewList[i].setTextSize(17f)
         textViewList[i].setTypeface(Typeface.DEFAULT)
+        textViewList[i].setTextSize(14f)
 
         val typeFace = ResourcesCompat.getFont(requireContext(),R.font.montserrat_bold)
         textViewList[i]!!.setTypeface(typeFace)
-
-
-
 
         textViewSelected = textViewList[i]
     }

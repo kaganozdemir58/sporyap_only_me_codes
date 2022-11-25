@@ -40,6 +40,7 @@ class OpenedEventParentRVAdapter (private val mContext: Context,
         holder.design.listeSayisi = listObject.OpenedEventList.size
         if( listObject.OpenedEventList.size > 0){
             holder.design.textViewGroupName.setText(listObject.categoryTitle)
+
         }
 
         var aList = listObject.OpenedEventList

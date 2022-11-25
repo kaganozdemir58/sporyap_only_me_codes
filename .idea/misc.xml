@@ -7,7 +7,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_circle_24.xml" value="0.1435" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.178" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/card_design_all_opened_event.xml" value="0.55" />
+        <entry key="app/src/main/res/layout/card_design_all_opened_event.xml" value="0.165" />
         <entry key="app/src/main/res/layout/card_design_main_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/card_design_opened_event_child_1.xml" value="0.335" />
         <entry key="app/src/main/res/layout/card_design_opened_event_child_2.xml" value="0.21505579065393518" />
@@ -15,7 +15,7 @@
         <entry key="app/src/main/res/layout/card_design_opened_event_child_4.xml" value="0.20607097050021378" />
         <entry key="app/src/main/res/layout/card_design_opened_event_child_5.xml" value="0.25" />
         <entry key="app/src/main/res/layout/card_design_opened_event_children.xml" value="0.2069260367678495" />
-        <entry key="app/src/main/res/layout/card_design_opened_event_parent.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/card_design_opened_event_parent.xml" value="0.25" />
         <entry key="app/src/main/res/layout/card_design_searchview_child_card.xml" value="0.335" />
         <entry key="app/src/main/res/layout/card_design_searchview_parent_card.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_all_opened_evend.xml" value="0.25" />

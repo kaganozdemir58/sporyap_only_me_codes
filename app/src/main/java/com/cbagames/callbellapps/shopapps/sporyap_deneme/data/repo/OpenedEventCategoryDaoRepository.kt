@@ -174,11 +174,21 @@ class OpenedEventCategoryDaoRepository() {
         var s = OpenedEventCategory(4,cList.isStartSoonTitle.toString(),"startSoon",StartSoonTitleList)
         var r = OpenedEventCategory(5,cList.isRecommendedTitle.toString(),"recommend",RecommendedTitleList)
 
-        categoryList.add(p)
-        categoryList.add(n)
-        categoryList.add(m)
-        categoryList.add(s)
-        categoryList.add(r)
+        if (p.OpenedEventList.size>1){
+            categoryList.add(p)
+        }
+        if (n.OpenedEventList.size>1) {
+            categoryList.add(n)
+        }
+        if (m.OpenedEventList.size>1) {
+            categoryList.add(m)
+        }
+        if (s.OpenedEventList.size>1) {
+            categoryList.add(s)
+        }
+        if (r.OpenedEventList.size>1) {
+            categoryList.add(r)
+        }
 
         objectList.value = categoryList
     }
